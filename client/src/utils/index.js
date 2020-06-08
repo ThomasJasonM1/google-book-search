@@ -18,6 +18,6 @@ export default {
         return axios.post('/api/books', bookData);
     },
     findBooks: (searchTerm) => {
-        return axios.post(`/api/books/search/${searchTerm}`);
+        return axios.get(`/api/books/search/${searchTerm}`);
     }
 };

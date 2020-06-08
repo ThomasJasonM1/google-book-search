@@ -34,7 +34,7 @@ const SearchBar = (props) => {
 			<TextField
 				value={searchTerm}
 				id="standard-basic"
-				label="Search Organizations"
+				label="Search Books"
 				onChange={onInputChange}
 				type="text"
 			/>

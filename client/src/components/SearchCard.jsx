@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 
 const SearchCard = (props) => {
 	const classes = useStyles();
-	const { name, image, about } = props.book;
+	const { title, authors, description, imageLinks, infoLink } = props.book.volumeInfo;
 
 	return (
 		<>
@@ -29,14 +29,14 @@ const SearchCard = (props) => {
 				<Card className={classes.root}>
 					<CardMedia
 						className={classes.media}
-						image={image}
-						title={name}
+						image={imageLinks.smallThumbnail || ''}
+						title={title}
 					/>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h2">
-							{name}
+							{authors.map(author => `${author} `)}
 						</Typography>
-						<Typography>{about}</Typography>
+						<Typography>{description}</Typography>
 					</CardContent>
 					<CardActions>
 						<Button size="small" color="primary">

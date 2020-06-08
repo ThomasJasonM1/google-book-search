@@ -3,9 +3,11 @@ import { Grid } from "@material-ui/core";
 import SearchCard from "./SearchCard";
 
 const SearchResults = (props) => {
+    console.log('props', props);
 	return (
 		<Grid container spacing={4}>
-			{props.bookList.map((book) => {
+			{props.BookList.map((book) => {
+                console.log(book);
 				return <SearchCard book={book} />;
 			})}
 		</Grid>

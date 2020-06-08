@@ -58,8 +58,8 @@ const BookTable = () => {
 
                         return (
                             <TableRow key={name}>
-                                <TableCell component="th" scope="row">{name}</TableCell>
-                                <TableCell align="left">{row.email}</TableCell>
+                                <TableCell component="th" scope="row">{title}</TableCell>
+                                <TableCell align="left">{authors.map(a => a.)}</TableCell>
                                 <TableCell align="left">{street.number} {street.name}<br />{address}</TableCell>
                                 <TableCell align="left">h: {row.cell}<br />c: {row.phone}</TableCell>
                                 <TableCell align="left">{dob}</TableCell>

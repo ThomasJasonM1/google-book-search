@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import API from "../utils/API.js";
+import API from "../utils/index";
 import SearchBar from "../components/SearchBar";
 import SearchResults from "../components/SearchResults";
-import "../styles/BookSearch.css";
+// import "../styles/BookSearch.css";
 
 const BookSearch = () => {
 	const [BookList, setBookList] = useState([]);
-	useEffect(() => {
+	// useEffect(() => {
 		
-	})
+	// })
 
 	const onSearchSubmit = (searchTerm) => {
-		API.BookNavSearch(searchTerm)
+		API.findBooks(searchTerm)
 			.then((response) => {
-				setBookList(response.data);
-				console.log(response.data);
+                console.log(response.data.items);
+				setBookList(response.data.items);
 			})
 			.catch((err) => console.log(err));
 	};
