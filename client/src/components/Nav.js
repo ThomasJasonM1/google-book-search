@@ -11,10 +11,8 @@ export default function Navbar() {
     useEffect(() => {
         const href = window.location.pathname;
         switch (href) {
-            case '/contact':
+            case '/saved':
                 return setValue(1);
-            case '/portfolio':
-                return setValue(2);
             default:
                 return setValue(0);
         }
@@ -49,8 +47,8 @@ export default function Navbar() {
                 className={classes.tabsStyles}
             >
                 
-                <Tab label="Search" to='/home' component={Link} />
-                <Tab label="Saved" to='/contact' component={Link} />
+                <Tab label="Search" to='/search' component={Link} />
+                <Tab label="Saved" to='/saved' component={Link} />
             </Tabs>
         </Paper>
     );

@@ -1,23 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import API from "../utils/index";
+import API from "../utils";
 import SearchBar from "../components/SearchBar";
 import SearchResults from "../components/SearchResults";
-// import "../styles/BookSearch.css";
 
 const BookSearch = () => {
-	const [BookList, setBookList] = useState([]);
-	// useEffect(() => {
-		
-	// })
+    const [BookList, setBookList] = useState([]);
+	useEffect(() => {
+		onSearchSubmit('doomsday');
+	}, [])
 
 	const onSearchSubmit = (searchTerm) => {
+        const bookSearchArray = [];
 		API.findBooks(searchTerm)
 			.then((response) => {
-                console.log(response.data.items);
-				setBookList(response.data.items);
-			})
+                response.data.items.map(item => {
+                    const { authors, title, description, infoLink, imageLinks } =  item.volumeInfo;
+                    const thisBook = {
+                        title,
+                        description,
+                        link: infoLink,
+                        authors,
+                        image: imageLinks.smallThumbnail
+                    }
+                    bookSearchArray.push(thisBook);
+                })
+            }).then(() => {
+                setBookList(bookSearchArray);
+            })
 			.catch((err) => console.log(err));
 	};
 
@@ -26,7 +37,7 @@ const BookSearch = () => {
 			<CssBaseline />
 			<Container>
 				<SearchBar onSearchSubmit={onSearchSubmit} />
-				<SearchResults BookList={BookList} />
+				<SearchResults BookList={BookList} saved={false} />
 			</Container>
 		</div>
 	);
